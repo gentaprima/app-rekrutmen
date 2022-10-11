@@ -31,7 +31,7 @@
                 <!-- Custom tabs (Charts with tabs)-->
                 <div class="card m-2">
                     <div class="card-body" style="border-radius:20px !important;border:none;">
-                        <table class="table">
+                        <table class="table" id="tableDataPelamar">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -42,21 +42,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($dataPelamar as $row)
-                                <tr>
-                                    <td>{{$loop->iteration}}</td>
-                                    <td>{{$row->nama}}</td>
-                                    <td>{{$row->tempat_lahir}}, {{$row->tgl_lahir}}</td>
-                                    <td>{{$row->posisi}}</td>
-                                    <td>
-                                        <center>
-                                            <button class="btn btn-default btn-sm" onclick="detailPelamar('{{$row->id_biodata}}')" data-toggle="modal" data-target="#modalDetail" style="border: none;"><i class="fa fa-eye"></i></button>
-                                            <a href="/form-update-lamaran/{{$row->id_biodata}}" class="btn btn-default btn-sm" style="border: none;"><i class="fa fa-edit"></i></a>
-                                            <a href="/delete-lowongan/{{$row->id_users}}" class="btn btn-default btn-sm" style="border: none;"><i class="fa fa-trash"></i></a>
-                                        </center>
-                                    </td>
-                                </tr>
-                                @endforeach
+                              
                             </tbody>
                         </table>
                     </div><!-- /.card-body -->
@@ -215,6 +201,33 @@
     </div>
 
     <script>
+
+        $.ajax({
+            url: `/api/get-data-pelamar-by-id/${localStorage.getItem('id')}`,
+            type: 'get',
+            dataType: 'json',
+            headers: {"Authorization": 'Bearer ' +localStorage.getItem('token')},
+            success: function(response) {
+                let k = 1;
+                $("#tableDataPelamar  tbody").empty();
+                for (let i = 0; i < response.data.length; i++) {
+                    var tr = $("<tr>");
+                    tr.append("<td>" + k++ + "</td>");
+                    tr.append("<td>" + response.data[i].nama + "</td>");
+                    tr.append("<td>" + (response.data[i].tempat_lahir) + "," + response.data[i].tgl_lahir + "</td>");
+                    tr.append("<td>" + (response.data[i].posisi) + "</td>");
+                    tr.append("<td>" + (response.data[i].posisi) + "</td>");
+                    tr.append(`<td>
+                        <center>
+                        <button class="btn btn-default btn-sm" onclick="detailPelamar('${response.data[i].id_biodata}')" data-toggle="modal" data-target="#modalDetail" style="border: none;"><i class="fa fa-eye"></i></button>
+                        <a href="/form-update-lamaran/${response.data[i].id_biodata}" class="btn btn-default btn-sm" style="border: none;"><i class="fa fa-edit"></i></a>
+                        
+                        </center></td>`);
+                    $("#tableDataPelamar").append(tr);
+                }
+            }
+        })
+
         function detailPelamar(id) {
             $.ajax({
                 url: `/get-detail-pelamar/${id}`,

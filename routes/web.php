@@ -50,6 +50,8 @@ Route::get('/get-detail-pelamar/{id}','DashboardController@getDetailPelamar');
 Route::get('/form-update-lamaran/{id}','DashboardController@formUpdateLamaran');
 Route::get('/delete-lowongan/{id}','DashboardController@deleteLowongan');
 
-Route::get('/data-pelamar','DashboardController@dataPelamar');
+// Route::get('/data-pelamar','DashboardController@dataPelamar');
+Route::get('/data-pelamar/{id}','DashboardController@dataPelamar');
 
 Route::get('/dashboard','DashboardController@index');
+Route::get('/dashboard-admin','DashboardController@indexAdmin');

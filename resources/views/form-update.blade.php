@@ -32,32 +32,31 @@
                 <div class="card m-2">
                     <div class="card-body" style="border-radius:20px !important;border:none;">
                         <h5 class="text-center mb-3 font-weight-bold">Data Pribadi Pelamar</h5>
-                        <form action="/update-lowongan/{{$dataBiodata->id}}" method="post">
+                        <form action="" method="post">
                             @csrf
                             <div class="form-group row">
                                 <label for="" class="col-sm-2">Posisi yang dilamar</label>
-                                <input type="text" class="form-control col-sm-10" value="{{$dataBiodata->posisi}}" name="posisi">
+                                <input type="text" class="form-control col-sm-10" name="posisi" id="posisi">
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2">Nama Lengkap</label>
-                                <input type="text" class="form-control col-sm-10" value="{{$dataBiodata->nama}}" name="nama">
+                                <input type="text" class="form-control col-sm-10" name="nama" id="nama">
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2">No KTP</label>
-                                <input type="text" class="form-control col-sm-10" value="{{$dataBiodata->no_ktp}}" name="noKtp">
+                                <input type="text" class="form-control col-sm-10" name="noKtp" id="noKtp">
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2">Tempat Lahir</label>
-                                <input type="text" class="form-control col-sm-10" value="{{$dataBiodata->tempat_lahir}}" name="tempatLahir">
+                                <input type="text" class="form-control col-sm-10" name="tempatLahir" id="tempatLahir">
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2">Tanggal Lahir</label>
-                                <input type="date" class="form-control col-sm-10" value="{{$dataBiodata->tgl_lahir}}" name="tglLahir">
+                                <input type="date" class="form-control col-sm-10" name="tglLahir" id="tglLahir">
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2">Jenis Kelamin</label>
-                                <select type="date" class="form-control col-sm-10" name="jk">
-                                    <option value="{{$dataBiodata->jk}}">{{$dataBiodata->jk}}</option>
+                                <select type="date" class="form-control col-sm-10" name="jk" id="jk">
                                     <option value="">-- Pilih Jenis Kelamin --</option>
                                     <option value="Laki-laki">Laki-laki</option>
                                     <option value="Perempuan">Perempuan</option>
@@ -65,27 +64,27 @@
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2">Agama</label>
-                                <input type="text" class="form-control col-sm-10" value="{{$dataBiodata->agama}}" name="agama">
+                                <input type="text" class="form-control col-sm-10" name="agama" id="agama">
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2">Golongan Darah</label>
-                                <input type="text" class="form-control col-sm-10" value="{{$dataBiodata->golongan_darah}}" name="golonganDarah">
+                                <input type="text" class="form-control col-sm-10" name="golonganDarah" id="golonganDarah">
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2">Alamat Tinggal</label>
-                                <textarea type="text" class="form-control col-sm-10" rows="5" name="alamatTinggal">{{$dataBiodata->alamat_tinggal}}</textarea>
+                                <textarea type="text" class="form-control col-sm-10" rows="5" name="alamatTinggal" id="alamatTinggal"></textarea>
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2">Alamat KTP</label>
-                                <textarea type="text" class="form-control col-sm-10" rows="5" name="alamatKtp">{{$dataBiodata->alamat_ktp}}</textarea>
+                                <textarea type="text" class="form-control col-sm-10" rows="5" name="alamatKtp" id="alamatKtp"></textarea>
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2">No Telepon</label>
-                                <input type="text" class="form-control col-sm-10" value="{{$dataBiodata->telp}}" name="telp">
+                                <input type="text" class="form-control col-sm-10" name="telp" id="telp">
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2">Kontak Darurat</label>
-                                <input type="text" class="form-control col-sm-10" value="{{$dataBiodata->kontak_darurat}}" name="kontak_darurat">
+                                <input type="text" class="form-control col-sm-10" name="kontak_darurat" id="kontak_darurat">
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2">Pendidikan Terakhir</label>
@@ -100,19 +99,11 @@
                                                 <th scope="col">Jurusan</th>
                                                 <th scope="col">Tahun Lulus</th>
                                                 <th scope="col">IPK</th>
+                                                <th scope="col">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($dataPendidikanTerakhir as $row)
-                                            <tr>
-                                                <td>{{$loop->iteration}}</td>
-                                                <td>{{$row->jenjang}}</td>
-                                                <td>{{$row->nama_institusi}}</td>
-                                                <td>{{$row->jurusan}}</td>
-                                                <td>{{$row->tahun_lulus}}</td>
-                                                <td>{{$row->ipk}}</td>
-                                            </tr>
-                                            @endforeach
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -129,17 +120,10 @@
                                                 <th scope="col">Nama Kursus/Seminar</th>
                                                 <th scope="col">Sertifikat (Ada/Tidak)</th>
                                                 <th scope="col">Tahun</th>
+                                                <th scope="col">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($dataRiwayatPelatihan as $row)
-                                            <tr>
-                                                <td>{{$loop->iteration}}</td>
-                                                <td>{{$row->nama_kursus}}</td>
-                                                <td>{{$row->sertifikat}}</td>
-                                                <td>{{$row->tahun}}</td>
-                                            </tr>
-                                            @endforeach
 
                                         </tbody>
                                     </table>
@@ -158,19 +142,11 @@
                                                 <th scope="col">Posisi Terakhir</th>
                                                 <th scope="col">Pendapatan Terakhir</th>
                                                 <th scope="col">Tahun</th>
+                                                <th scope="col">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($dataRiwayatPekerjaan as $row)
-                                            <tr>
 
-                                                <td>{{$loop->iteration}}</td>
-                                                <td>{{$row->nama_perusahaan}}</td>
-                                                <td>{{$row->posisi_terakhir}}</td>
-                                                <td>{{$row->pendapatan_terakhir}}</td>
-                                                <td>{{$row->tahun}}</td>
-                                            </tr>
-                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -179,34 +155,26 @@
 
                             <div class="form-group row">
                                 <label for="" class="col-sm-2">Skill</label>
-                                <input type="text" class="form-control col-sm-10" value="{{$dataLowongan->skill}}" placeholder="PHP,Javascript, dan lain-lain" name="skill">
+                                <input type="text" class="form-control col-sm-10" placeholder="PHP,Javascript, dan lain-lain" name="skill" id="skill">
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-6">bersedia ditempatkan diseluruh kantor perusahaan</label>
                                 <div class="col-sm-6">
-                                    @php if($dataLowongan->bersedia_ditempatkan == 'Ya'){ @endphp
-                                    <input type="radio" value="Ya" name="bersediaDitempatkan" checked>
-                                    @php }else{ @endphp
-                                    <input type="radio" value="Ya" name="bersediaDitempatkan">
-                                    @php } @endphp
+                                    <input type="radio" value="Ya" name="bersediaDitempatkan" id="bersediaDitempatkanYa">
                                     <label for="">Ya</label>
-                                    @php if($dataLowongan->bersedia_ditempatkan == 'Tidak'){ @endphp
-                                    <input type="radio" class="ml-3" value="Tidak" name="bersediaDitempatkan" checked>
-                                    @php }else{ @endphp
-                                    <input type="radio" class="ml-3" value="Tidak" name="bersediaDitempatkan">
-                                    @php } @endphp
+                                    <input type="radio" class="ml-3" value="Tidak" name="bersediaDitempatkan" id="bersediaDitempatkanTidak">
                                     <label for="">Tidak</label>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2">Penghasilan yang diharapkan</label>
-                                <input type="text" class="form-control col-sm-10" value="{{$dataLowongan->gaji}}" name="gaji">
+                                <input type="text" class="form-control col-sm-10" name="gaji" id="gaji">
                             </div>
 
                             <div class="form-group row">
                                 <label for="" class="col-sm-2"></label>
-                                <button type="submit" class="btn btn-primary">Simpan</button>
-                                <a href="/" type="submit" class="btn btn-defaultbl ml-3">Kembali</a>
+                                <button type="button" onclick="saveData()" class="btn btn-primary">Simpan</button>
+                                <a  id="buttonBack" class="btn btn-defaukt">Kembali</button>
                             </div>
 
 
@@ -218,8 +186,8 @@
 
             </section>
         </div>
-        <p id="idBiodata" hidden="true">{{$dataBiodata->id}}</p>
     </section>
+
 
     <!-- Modal -->
     <div class="modal fade" id="pendidikanTerakhir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -332,13 +300,128 @@
         </div>
     </div>
 
+    <p hidden="true" id="idBiodata">{{$idBiodata}}</p>
+    <p hidden="true" id="idUsers">{{$detail->id_users}}</p>
+
     <script>
+        
+        if(localStorage.getItem('role') == 0){
+            document.getElementById("buttonBack").href = "/dashboard";
+        }else{
+            document.getElementById("buttonBack").href = "/dashboard-admin";
+
+        }
+
+        loadDataPendidikan();
+        loadDataRiwayatPekerjaan();
+        loadDataRiwayatPelatihan();
+        loadDetailPelamar();
+
+        function loadDetailPelamar(){
+            var idBiodata = document.getElementById("idBiodata").innerHTML;
+            $.ajax({
+                url : `/api/get-detail-pelamar/${idBiodata}`,
+                type:'get',
+                dataType:'json',
+                headers: {
+                    "Authorization": 'Bearer ' + localStorage.getItem('token')
+                },
+                success:function(response){
+                    let dataBiodata = response.dataBiodata;
+                    let dataLowongan = response.dataLowongan;
+                    document.getElementById("posisi").value = dataBiodata.posisi; 
+                    document.getElementById("nama").value = dataBiodata.nama; 
+                    document.getElementById("noKtp").value = dataBiodata.no_ktp; 
+                    document.getElementById("tempatLahir").value = dataBiodata.tempat_lahir; 
+                    document.getElementById("tglLahir").value = dataBiodata.tgl_lahir; 
+                    document.getElementById("jk").value = dataBiodata.jk; 
+                    document.getElementById("agama").value = dataBiodata.agama; 
+                    document.getElementById("golonganDarah").value = dataBiodata.golongan_darah; 
+                    document.getElementById("alamatTinggal").innerHTML = dataBiodata.alamat_tinggal; 
+                    document.getElementById("alamatKtp").innerHTML = dataBiodata.alamat_ktp; 
+                    document.getElementById("telp").value = dataBiodata.telp; 
+                    document.getElementById("kontak_darurat").value = dataBiodata.kontak_darurat; 
+                    document.getElementById("skill").value = dataLowongan.skill; 
+                    document.getElementById("gaji").value = dataLowongan.gaji; 
+                    if(dataLowongan.bersedia_ditempatkan == 'Ya'){
+                        document.getElementById("bersediaDitempatkanYa").checked = true
+                    }else{
+                        document.getElementById("bersediaDitempatkanTidak").checked = true
+
+                    }
+                }
+            })
+        }
+
+        function saveData() {
+            let posisi = document.getElementById("posisi").value;
+            let nama = document.getElementById("nama").value;
+            let noKtp = document.getElementById("noKtp").value;
+            let tempatLahir = document.getElementById("tempatLahir").value;
+            let tglLahir = document.getElementById("tglLahir").value;
+            let jk = document.getElementById("jk").value;
+            let agama = document.getElementById("agama").value;
+            let golonganDarah = document.getElementById("golonganDarah").value;
+            let alamatTinggal = document.getElementById("alamatTinggal").value;
+            let alamatKtp = document.getElementById("alamatKtp").value;
+            let telp = document.getElementById("telp").value;
+            let kontak_darurat = document.getElementById("kontak_darurat").value;
+            let skill = document.getElementById("skill").value;
+            let bersediaDitempatkanYa = document.getElementById("bersediaDitempatkanYa");
+            let bersediaDitempatkanTidak = document.getElementById("bersediaDitempatkanTidak");
+            let gaji = document.getElementById("gaji").value;
+            var idBiodata = document.getElementById("idBiodata").innerHTML;
+
+            if (posisi != '' && nama != '' && noKtp != '' && tempatLahir != '' && jk != '' && agama != '' && golonganDarah != '' && alamatTinggal != '' && alamatKtp != '' && telp != '' && kontak_darurat != '' && skill != '' && gaji != '') {
+                $.ajax({
+                    url: `/api/update-lowongan/${idBiodata}`,
+                    dataType: 'json',
+                    type: 'post',
+                    data: {
+                        nama: nama,
+                        posisi: posisi,
+                        noKtp: noKtp,
+                        tempatLahir: tempatLahir,
+                        tglLahir: tglLahir,
+                        jk: jk,
+                        agama: agama,
+                        golonganDarah: golonganDarah,
+                        alamatTinggal: alamatTinggal,
+                        alamatKtp: alamatKtp,
+                        telp: telp,
+                        kontak_darurat: kontak_darurat,
+                        skill: skill,
+                        bersediaDitempatkan: bersediaDitempatkanYa.checked == true ? 'Ya' : 'Tidak',
+                        gaji: gaji
+                    },
+                    headers: {
+                        "Authorization": 'Bearer ' + localStorage.getItem('token')
+                    },
+                    success: function(response) {
+                        if (response.success == true) {
+                            Toast.fire({
+                                icon: 'success',
+                                title: response.message
+                            });
+                        }
+                    }
+
+                })
+            } else {
+                Toast.fire({
+                    icon: 'error',
+                    title: 'Data tidak boleh kosong !!'
+                });
+            }
+        }
+
         function saveRiwayatPekerjaan() {
             var csrf_token = "<?php echo e(csrf_token()); ?>";
             var namaPerusahaan = document.getElementById("namaPerusahaan").value;
             var pendapatanTerakhir = document.getElementById("pendapatanTerakhir").value;
             var posisiTerakhir = document.getElementById("posisiTerakhir").value;
             var tahunPekerjaan = document.getElementById("tahunPekerjaan").value;
+            var idUsers = document.getElementById("idUsers").innerHTML;
 
             if (namaPerusahaan == '' && pendapatanTerakhir == '' && posisiTerakhir == '' && tahunPekerjaan == '') {
                 Toast.fire({
@@ -350,30 +433,41 @@
             $.ajax({
                 type: "POST",
                 dataType: 'json',
-                url: '/update-riwayat-pekerjaan',
+                url: `/api/add-riwayat-pekerjaan/${idUsers}`,
+                headers: {
+                    "Authorization": 'Bearer ' + localStorage.getItem('token')
+                },
                 data: {
                     namaPerusahaan: namaPerusahaan,
                     pendapatanTerakhir: pendapatanTerakhir,
                     posisiTerakhir: posisiTerakhir,
                     tahunPekerjaan: tahunPekerjaan,
-                    idBiodata : document.getElementById("idBiodata").innerHTML,
                     _token: csrf_token
                 },
                 success: function(response) {
                     if (response.status == true) {
-                        loadDataRiwayatPekerjaan(document.getElementById("idBiodata").innerHTML);
+                        Toast.fire({
+                            icon: 'success',
+                            title: response.message
+                        });
+                        loadDataRiwayatPekerjaan();
                     }
                 }
             })
         }
 
-        function loadDataRiwayatPekerjaan(id) {
+        function loadDataRiwayatPekerjaan() {
             $("#closeRiwayatPekerjaan").click();
             $("#tableDataRiwayatPekerjaan  tbody").empty();
+            var idBiodata = document.getElementById("idBiodata");
+            var idUsers = document.getElementById("idUsers").innerHTML;
             $.ajax({
-                url: `/get-riwayat-pekerjaan/${id}`,
+                url: `/api/get-riwayat-pekerjaan/${idUsers}`,
                 dataType: 'html',
                 type: 'GET',
+                headers: {
+                    "Authorization": 'Bearer ' + localStorage.getItem('token')
+                },
                 success: function(responseData) {
                     let data = JSON.parse(responseData);
                     let k = 1;
@@ -385,6 +479,11 @@
                         tr.append("<td>" + (data.data[i].posisi_terakhir) + "</td>");
                         tr.append("<td>" + (data.data[i].pendapatan_terakhir) + "</td>");
                         tr.append("<td>" + (data.data[i].tahun) + "</td>");
+                        tr.append(`<td>
+                                <center>
+                                <button class="btn btn-default btn-xs" type="button" onclick="deleteRiwayatPekerjaan('${data.data[i].id}')"><i class="fa fa-trash"></i></button>
+                                </center>
+                                </td>`);
                         $("#tableDataRiwayatPekerjaan").append(tr);
                     }
                 }
@@ -396,6 +495,7 @@
             var namaKursus = document.getElementById("namaKursus").value;
             var sertifikat = document.getElementById("sertifikat").value;
             var tahunPelatihan = document.getElementById("tahunPelatihan").value;
+            var idUsers = document.getElementById("idUsers").innerHTML;
 
             if (namaKursus == '' && sertifikat == '' && tahunPelatihan == '') {
                 Toast.fire({
@@ -407,29 +507,39 @@
             $.ajax({
                 type: "POST",
                 dataType: 'json',
-                url: '/update-riwayat-pelatihan',
+                url: `/api/add-riwayat-pelatihan/${idUsers}`,
+                headers: {
+                    "Authorization": 'Bearer ' + localStorage.getItem('token')
+                },
                 data: {
                     namaKursus: namaKursus,
                     sertifikat: sertifikat,
                     tahunPelatihan: tahunPelatihan,
-                    idBiodata : document.getElementById("idBiodata").innerHTML,
-                    _token: csrf_token
                 },
                 success: function(response) {
-                    if (response.status == true) {
-                        loadDataRiwayatPelatihan(document.getElementById("idBiodata").innerHTML);
+                    if (response.success == "true") {
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Data Pelatihan berhasil ditambahkan'
+                        });
+                        $("#closeRiwayatPelatihan").click();
+                        loadDataRiwayatPelatihan();
                     }
                 }
             })
         }
 
-        function loadDataRiwayatPelatihan(id) {
+        function loadDataRiwayatPelatihan() {
             $("#closeRiwayatPelatihan").click();
             $("#tableDataRiwayatPelatihan  tbody").empty();
+            var idUsers = document.getElementById("idUsers").innerHTML;
             $.ajax({
-                url: `/get-riwayat-pelatihan/${id}`,
+                url: `/api/get-riwayat-pelatihan/${idUsers}`,
                 dataType: 'html',
                 type: 'GET',
+                headers: {
+                    "Authorization": 'Bearer ' + localStorage.getItem('token')
+                },
                 success: function(responseData) {
                     let data = JSON.parse(responseData);
                     let k = 1;
@@ -440,8 +550,31 @@
                         tr.append("<td>" + data.data[i].nama_kursus + "</td>");
                         tr.append("<td>" + (data.data[i].sertifikat) + "</td>");
                         tr.append("<td>" + (data.data[i].tahun) + "</td>");
+                        tr.append(`<td>
+                                <center>
+                                <button class="btn btn-default btn-xs" type="button" onclick="deleteRiwayatPelatihan('${data.data[i].id}')"><i class="fa fa-trash"></i></button>
+                                </center>
+                                </td>`);
                         $("#tableDataRiwayatPelatihan").append(tr);
                     }
+                }
+            })
+        }
+
+        function deleteRiwayatPelatihan(id) {
+            $.ajax({
+                type: "delete",
+                dataType: 'json',
+                url: `/api/delete-riwayat-pelatihan/${id}`,
+                headers: {
+                    "Authorization": 'Bearer ' + localStorage.getItem('token')
+                },
+                success: function(response) {
+                    Toast.fire({
+                        icon: 'success',
+                        title: response.message
+                    });
+                    loadDataRiwayatPelatihan();
                 }
             })
         }
@@ -454,6 +587,7 @@
             var jurusan = document.getElementById("jurusan").value;
             var tahun_lulus = document.getElementById("tahunLulusPendidikan").value;
             var ipk = document.getElementById("ipk").value;
+            var idUsers = document.getElementById("idUsers").innerHTML;
 
             if (jenjang == '' && institusi == '' && jurusan == '' && tahun_lulus == '' && ipk == '') {
 
@@ -466,19 +600,26 @@
             $.ajax({
                 type: "POST",
                 dataType: 'json',
-                url: '/update-pendidikan-terakhir',
+                url: `/api/add-pendidikan-terakhir/${idUsers}`,
+                headers: {
+                    "Authorization": 'Bearer ' + localStorage.getItem('token')
+                },
                 data: {
                     jenjang: jenjang,
                     institusi: institusi,
                     jurusan: jurusan,
                     tahun_lulus: tahun_lulus,
                     ipk: ipk,
-                    idBiodata : document.getElementById("idBiodata").innerHTML,
                     _token: csrf_token
                 },
                 success: function(response) {
                     if (response.status == true) {
-                        loadDataPendidikan(document.getElementById("idBiodata").innerHTML);
+                        Toast.fire({
+                            icon: 'success',
+                            title: response.message
+                        });
+                        $("#closePendidikanTerakhir").click();
+                        loadDataPendidikan();
                     }
                 }
 
@@ -488,17 +629,20 @@
 
         }
 
-        function loadDataPendidikan(id) {
+        function loadDataPendidikan() {
             $("#closePendidikanTerakhir").click();
             $("#tableDataPendidikanTerakhir  tbody").empty();
+            var idUsers = document.getElementById("idUsers").innerHTML;
             $.ajax({
-                url: `/get-pendidikan-terakhir/${id}`,
+                url: `/api/get-pendidikan-terakhir/${idUsers}`,
                 dataType: 'html',
                 type: 'GET',
+                headers: {
+                    "Authorization": 'Bearer ' + localStorage.getItem('token')
+                },
                 success: function(responseData) {
                     let data = JSON.parse(responseData);
                     let k = 1;
-                    console.log(data.data.length);
                     for (let i = 0; i < data.data.length; i++) {
                         var tr = $("<tr>");
                         tr.append("<td>" + k++ + "</td>");
@@ -507,8 +651,49 @@
                         tr.append("<td>" + (data.data[i].jurusan) + "</td>");
                         tr.append("<td>" + (data.data[i].tahun_lulus) + "</td>");
                         tr.append("<td>" + (data.data[i].ipk) + "</td>");
+                        tr.append(`<td>
+                                <center>
+                                <button class="btn btn-default btn-xs" type="button" onclick="deletePendidikanTerakhir('${data.data[i].id}')"><i class="fa fa-trash"></i></button>
+                                </center>
+                                </td>`);
                         $("#tableDataPendidikanTerakhir").append(tr);
                     }
+                }
+            })
+        }
+
+        function deletePendidikanTerakhir(id) {
+            $.ajax({
+                type: "delete",
+                dataType: 'json',
+                url: `/api/delete-pendidikan-terakhir/${id}`,
+                headers: {
+                    "Authorization": 'Bearer ' + localStorage.getItem('token')
+                },
+                success: function(response) {
+                    Toast.fire({
+                        icon: 'success',
+                        title: response.message
+                    });
+                    loadDataPendidikan();
+                }
+            })
+        }
+
+        function deleteRiwayatPekerjaan(id) {
+            $.ajax({
+                type: "delete",
+                dataType: 'json',
+                url: `/api/delete-riwayat-pekerjaan/${id}`,
+                headers: {
+                    "Authorization": 'Bearer ' + localStorage.getItem('token')
+                },
+                success: function(response) {
+                    Toast.fire({
+                        icon: 'success',
+                        title: response.message
+                    });
+                    loadDataRiwayatPekerjaan();
                 }
             })
         }

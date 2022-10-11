@@ -37,14 +37,14 @@
                     <img src="{{asset('/logo.png')}}" alt="IMG" class="size-logo">
                 </div>
 
-                <form class="login100-form validate-form" method="post" action="/process-login">
+                <form class="login100-form validate-form" method="post" action="">
                     @csrf
                     <span class="login100-form-title">
                         Users Login
                     </span>
 
                     <div class="wrap-input100 validate-input">
-                        <input class="input100" type="email" name="email" id="username" value="{{old('email')}}" placeholder="Email">
+                        <input class="input100" type="email" name="email" id="email" value="{{old('email')}}" placeholder="Email">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-user" aria-hidden="true"></i>
@@ -60,7 +60,7 @@
                     </div>
 
                     <div class="container-login100-form-btn">
-                        <button type="submit" class="login100-form-btn">
+                        <button type="button" onclick="login()" class="login100-form-btn">
                             Login
                         </button>
                     </div>
@@ -121,6 +121,48 @@
                 icon: icon.innerHTML,
                 title: message.innerHTML
             });
+        }
+    </script>
+
+    <script>
+        function login() {
+            $.ajax({
+                url: 'api/auth',
+                dataType: 'json',
+                type: 'post',
+                data: {
+                    email: document.getElementById("email").value,
+                    password: document.getElementById("password").value,
+                },
+                success: function(response) {
+                    if (response.success == true) {
+                        localStorage.setItem('login',true);
+                        localStorage.setItem('role',response.dataUsers.role);
+                        localStorage.setItem('id',response.dataUsers.id);
+                        localStorage.setItem('token',response.token);
+                        if(response.dataUsers.role == 0){
+
+                            window.location.replace('<?= env('WEB_URL') ?>' + 'dashboard');
+                        }else{
+                            window.location.replace('<?= env('WEB_URL') ?>' + 'dashboard-admin');
+
+                        }
+                    }else{
+                        Toast.fire({
+                            icon: 'error',
+                            title: response.message
+                        });
+
+                    }
+                }
+            })
+        }
+        if(localStorage.getItem('login') == "true" && localStorage.getItem("role") == 0){
+            window.location.replace('<?= env('WEB_URL') ?>' + 'dashboard');
+            
+        }else if(localStorage.getItem('login') == "true" && localStorage.getItem("role") == 1){
+            window.location.replace('<?= env('WEB_URL') ?>' + 'dashboard-admin');
+
         }
     </script>
 

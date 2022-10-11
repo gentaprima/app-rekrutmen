@@ -32,31 +32,31 @@
                 <div class="card m-2">
                     <div class="card-body" style="border-radius:20px !important;border:none;">
                         <h5 class="text-center mb-3 font-weight-bold">Data Pribadi Pelamar</h5>
-                        <form action="/add-lowongan" method="post">
+                        <form action="" method="post">
                             @csrf
                             <div class="form-group row">
                                 <label for="" class="col-sm-2">Posisi yang dilamar</label>
-                                <input type="text" class="form-control col-sm-10" name="posisi">
+                                <input type="text" class="form-control col-sm-10" name="posisi" id="posisi">
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2">Nama Lengkap</label>
-                                <input type="text" class="form-control col-sm-10" name="nama">
+                                <input type="text" class="form-control col-sm-10" name="nama" id="nama">
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2">No KTP</label>
-                                <input type="text" class="form-control col-sm-10" name="noKtp">
+                                <input type="text" class="form-control col-sm-10" name="noKtp" id="noKtp">
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2">Tempat Lahir</label>
-                                <input type="text" class="form-control col-sm-10" name="tempatLahir">
+                                <input type="text" class="form-control col-sm-10" name="tempatLahir" id="tempatLahir">
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2">Tanggal Lahir</label>
-                                <input type="date" class="form-control col-sm-10" name="tglLahir">
+                                <input type="date" class="form-control col-sm-10" name="tglLahir" id="tglLahir">
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2">Jenis Kelamin</label>
-                                <select type="date" class="form-control col-sm-10" name="jk">
+                                <select type="date" class="form-control col-sm-10" name="jk" id="jk">
                                     <option value="">-- Pilih Jenis Kelamin --</option>
                                     <option value="Laki-laki">Laki-laki</option>
                                     <option value="Perempuan">Perempuan</option>
@@ -64,27 +64,27 @@
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2">Agama</label>
-                                <input type="text" class="form-control col-sm-10" name="agama">
+                                <input type="text" class="form-control col-sm-10" name="agama" id="agama">
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2">Golongan Darah</label>
-                                <input type="text" class="form-control col-sm-10" name="golonganDarah">
+                                <input type="text" class="form-control col-sm-10" name="golonganDarah" id="golonganDarah">
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2">Alamat Tinggal</label>
-                                <textarea type="text" class="form-control col-sm-10" rows="5" name="alamatTinggal"></textarea>
+                                <textarea type="text" class="form-control col-sm-10" rows="5" name="alamatTinggal" id="alamatTinggal"></textarea>
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2">Alamat KTP</label>
-                                <textarea type="text" class="form-control col-sm-10" rows="5" name="alamatKtp"></textarea>
+                                <textarea type="text" class="form-control col-sm-10" rows="5" name="alamatKtp" id="alamatKtp"></textarea>
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2">No Telepon</label>
-                                <input type="text" class="form-control col-sm-10" name="telp">
+                                <input type="text" class="form-control col-sm-10" name="telp" id="telp">
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2">Kontak Darurat</label>
-                                <input type="text" class="form-control col-sm-10" name="kontak_darurat">
+                                <input type="text" class="form-control col-sm-10" name="kontak_darurat" id="kontak_darurat">
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2">Pendidikan Terakhir</label>
@@ -99,6 +99,7 @@
                                                 <th scope="col">Jurusan</th>
                                                 <th scope="col">Tahun Lulus</th>
                                                 <th scope="col">IPK</th>
+                                                <th scope="col">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -119,6 +120,7 @@
                                                 <th scope="col">Nama Kursus/Seminar</th>
                                                 <th scope="col">Sertifikat (Ada/Tidak)</th>
                                                 <th scope="col">Tahun</th>
+                                                <th scope="col">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -140,6 +142,7 @@
                                                 <th scope="col">Posisi Terakhir</th>
                                                 <th scope="col">Pendapatan Terakhir</th>
                                                 <th scope="col">Tahun</th>
+                                                <th scope="col">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -152,25 +155,25 @@
 
                             <div class="form-group row">
                                 <label for="" class="col-sm-2">Skill</label>
-                                <input type="text" class="form-control col-sm-10" placeholder="PHP,Javascript, dan lain-lain" name="skill">
+                                <input type="text" class="form-control col-sm-10" placeholder="PHP,Javascript, dan lain-lain" name="skill" id="skill">
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-6">bersedia ditempatkan diseluruh kantor perusahaan</label>
                                 <div class="col-sm-6">
-                                    <input type="radio" value="Ya" name="bersediaDitempatkan">
+                                    <input type="radio" value="Ya" name="bersediaDitempatkan" id="bersediaDitempatkanYa">
                                     <label for="">Ya</label>
-                                    <input type="radio" class="ml-3" value="Tidak" name="bersediaDitempatkan">
+                                    <input type="radio" class="ml-3" value="Tidak" name="bersediaDitempatkan" id="bersediaDitempatkanTidak">
                                     <label for="">Tidak</label>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2">Penghasilan yang diharapkan</label>
-                                <input type="text" class="form-control col-sm-10"  name="gaji">
+                                <input type="text" class="form-control col-sm-10" name="gaji" id="gaji">
                             </div>
 
                             <div class="form-group row">
                                 <label for="" class="col-sm-2"></label>
-                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <button type="button" onclick="saveData()" class="btn btn-primary">Simpan</button>
                             </div>
 
 
@@ -296,6 +299,67 @@
     </div>
 
     <script>
+        function saveData() {
+            let posisi = document.getElementById("posisi").value;
+            let nama = document.getElementById("nama").value;
+            let noKtp = document.getElementById("noKtp").value;
+            let tempatLahir = document.getElementById("tempatLahir").value;
+            let tglLahir = document.getElementById("tglLahir").value;
+            let jk = document.getElementById("jk").value;
+            let agama = document.getElementById("agama").value;
+            let golonganDarah = document.getElementById("golonganDarah").value;
+            let alamatTinggal = document.getElementById("alamatTinggal").value;
+            let alamatKtp = document.getElementById("alamatKtp").value;
+            let telp = document.getElementById("telp").value;
+            let kontak_darurat = document.getElementById("kontak_darurat").value;
+            let skill = document.getElementById("skill").value;
+            let bersediaDitempatkanYa = document.getElementById("bersediaDitempatkanYa");
+            let bersediaDitempatkanTidak = document.getElementById("bersediaDitempatkanTidak");
+            let gaji = document.getElementById("gaji").value;
+
+            if (posisi != '' && nama != '' && noKtp != '' && tempatLahir != '' && jk != '' && agama != '' && golonganDarah != '' && alamatTinggal != '' && alamatKtp != '' && telp != '' && kontak_darurat != '' && skill != '' && gaji != '') {
+                $.ajax({
+                    url: `/api/add-lowongan/${localStorage.getItem('id')}`,
+                    dataType: 'json',
+                    type: 'post',
+                    data: {
+                        nama: nama,
+                        posisi: posisi,
+                        noKtp: noKtp,
+                        tempatLahir: tempatLahir,
+                        tglLahir: tglLahir,
+                        jk: jk,
+                        agama: agama,
+                        golonganDarah: golonganDarah,
+                        alamatTinggal: alamatTinggal,
+                        alamatKtp: alamatKtp,
+                        telp: telp,
+                        kontak_darurat: kontak_darurat,
+                        skill: skill,
+                        bersediaDitempatkan: bersediaDitempatkanYa.checked == true ? 'Ya' : 'Tidak',
+                        gaji: gaji
+                    },
+                    headers: {
+                        "Authorization": 'Bearer ' + localStorage.getItem('token')
+                    },
+                    success: function(response) {
+                        if (response.success == true) {
+                            Toast.fire({
+                                icon: 'success',
+                                title: response.message
+                            });
+                        }
+                    }
+
+                })
+            } else {
+                Toast.fire({
+                    icon: 'error',
+                    title: 'Data tidak boleh kosong !!'
+                });
+            }
+        }
+
         function saveRiwayatPekerjaan() {
             var csrf_token = "<?php echo e(csrf_token()); ?>";
             var namaPerusahaan = document.getElementById("namaPerusahaan").value;
@@ -313,7 +377,10 @@
             $.ajax({
                 type: "POST",
                 dataType: 'json',
-                url: '/add-riwayat-pekerjaan',
+                url: `/api/add-riwayat-pekerjaan/${localStorage.getItem('id')}`,
+                headers: {
+                    "Authorization": 'Bearer ' + localStorage.getItem('token')
+                },
                 data: {
                     namaPerusahaan: namaPerusahaan,
                     pendapatanTerakhir: pendapatanTerakhir,
@@ -323,6 +390,10 @@
                 },
                 success: function(response) {
                     if (response.status == true) {
+                        Toast.fire({
+                            icon: 'success',
+                            title: response.message
+                        });
                         loadDataRiwayatPekerjaan();
                     }
                 }
@@ -333,9 +404,12 @@
             $("#closeRiwayatPekerjaan").click();
             $("#tableDataRiwayatPekerjaan  tbody").empty();
             $.ajax({
-                url: `/get-riwayat-pekerjaan`,
+                url: `/api/get-riwayat-pekerjaan/${localStorage.getItem('id')}`,
                 dataType: 'html',
                 type: 'GET',
+                headers: {
+                    "Authorization": 'Bearer ' + localStorage.getItem('token')
+                },
                 success: function(responseData) {
                     let data = JSON.parse(responseData);
                     let k = 1;
@@ -347,6 +421,11 @@
                         tr.append("<td>" + (data.data[i].posisi_terakhir) + "</td>");
                         tr.append("<td>" + (data.data[i].pendapatan_terakhir) + "</td>");
                         tr.append("<td>" + (data.data[i].tahun) + "</td>");
+                        tr.append(`<td>
+                                <center>
+                                <button class="btn btn-default btn-xs" type="button" onclick="deleteRiwayatPekerjaan('${data.data[i].id}')"><i class="fa fa-trash"></i></button>
+                                </center>
+                                </td>`);
                         $("#tableDataRiwayatPekerjaan").append(tr);
                     }
                 }
@@ -369,15 +448,22 @@
             $.ajax({
                 type: "POST",
                 dataType: 'json',
-                url: '/add-riwayat-pelatihan',
+                url: `/api/add-riwayat-pelatihan/${localStorage.getItem('id')}`,
+                headers: {
+                    "Authorization": 'Bearer ' + localStorage.getItem('token')
+                },
                 data: {
                     namaKursus: namaKursus,
                     sertifikat: sertifikat,
                     tahunPelatihan: tahunPelatihan,
-                    _token: csrf_token
                 },
                 success: function(response) {
-                    if (response.status == true) {
+                    if (response.success == "true") {
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Data Pelatihan berhasil ditambahkan'
+                        });
+                        $("#closeRiwayatPelatihan").click();
                         loadDataRiwayatPelatihan();
                     }
                 }
@@ -388,9 +474,12 @@
             $("#closeRiwayatPelatihan").click();
             $("#tableDataRiwayatPelatihan  tbody").empty();
             $.ajax({
-                url: `/get-riwayat-pelatihan`,
+                url: `/api/get-riwayat-pelatihan/${localStorage.getItem('id')}`,
                 dataType: 'html',
                 type: 'GET',
+                headers: {
+                    "Authorization": 'Bearer ' + localStorage.getItem('token')
+                },
                 success: function(responseData) {
                     let data = JSON.parse(responseData);
                     let k = 1;
@@ -401,8 +490,31 @@
                         tr.append("<td>" + data.data[i].nama_kursus + "</td>");
                         tr.append("<td>" + (data.data[i].sertifikat) + "</td>");
                         tr.append("<td>" + (data.data[i].tahun) + "</td>");
+                        tr.append(`<td>
+                                <center>
+                                <button class="btn btn-default btn-xs" type="button" onclick="deleteRiwayatPelatihan('${data.data[i].id}')"><i class="fa fa-trash"></i></button>
+                                </center>
+                                </td>`);
                         $("#tableDataRiwayatPelatihan").append(tr);
                     }
+                }
+            })
+        }
+
+        function deleteRiwayatPelatihan(id) {
+            $.ajax({
+                type: "delete",
+                dataType: 'json',
+                url: `/api/delete-riwayat-pelatihan/${id}`,
+                headers: {
+                    "Authorization": 'Bearer ' + localStorage.getItem('token')
+                },
+                success: function(response) {
+                    Toast.fire({
+                        icon: 'success',
+                        title: response.message
+                    });
+                    loadDataRiwayatPelatihan();
                 }
             })
         }
@@ -427,7 +539,10 @@
             $.ajax({
                 type: "POST",
                 dataType: 'json',
-                url: '/add-pendidikan-terakhir',
+                url: `/api/add-pendidikan-terakhir/${localStorage.getItem('id')}`,
+                headers: {
+                    "Authorization": 'Bearer ' + localStorage.getItem('token')
+                },
                 data: {
                     jenjang: jenjang,
                     institusi: institusi,
@@ -438,6 +553,11 @@
                 },
                 success: function(response) {
                     if (response.status == true) {
+                        Toast.fire({
+                            icon: 'success',
+                            title: response.message
+                        });
+                        $("#closePendidikanTerakhir").click();
                         loadDataPendidikan();
                     }
                 }
@@ -452,13 +572,15 @@
             $("#closePendidikanTerakhir").click();
             $("#tableDataPendidikanTerakhir  tbody").empty();
             $.ajax({
-                url: `/get-pendidikan-terakhir`,
+                url: `/api/get-pendidikan-terakhir/${localStorage.getItem('id')}`,
                 dataType: 'html',
                 type: 'GET',
+                headers: {
+                    "Authorization": 'Bearer ' + localStorage.getItem('token')
+                },
                 success: function(responseData) {
                     let data = JSON.parse(responseData);
                     let k = 1;
-                    console.log(data.data.length);
                     for (let i = 0; i < data.data.length; i++) {
                         var tr = $("<tr>");
                         tr.append("<td>" + k++ + "</td>");
@@ -467,8 +589,49 @@
                         tr.append("<td>" + (data.data[i].jurusan) + "</td>");
                         tr.append("<td>" + (data.data[i].tahun_lulus) + "</td>");
                         tr.append("<td>" + (data.data[i].ipk) + "</td>");
+                        tr.append(`<td>
+                                <center>
+                                <button class="btn btn-default btn-xs" type="button" onclick="deletePendidikanTerakhir('${data.data[i].id}')"><i class="fa fa-trash"></i></button>
+                                </center>
+                                </td>`);
                         $("#tableDataPendidikanTerakhir").append(tr);
                     }
+                }
+            })
+        }
+
+        function deletePendidikanTerakhir(id) {
+            $.ajax({
+                type: "delete",
+                dataType: 'json',
+                url: `/api/delete-pendidikan-terakhir/${id}`,
+                headers: {
+                    "Authorization": 'Bearer ' + localStorage.getItem('token')
+                },
+                success: function(response) {
+                    Toast.fire({
+                        icon: 'success',
+                        title: response.message
+                    });
+                    loadDataPendidikan();
+                }
+            })
+        }
+
+        function deleteRiwayatPekerjaan(id) {
+            $.ajax({
+                type: "delete",
+                dataType: 'json',
+                url: `/api/delete-riwayat-pekerjaan/${id}`,
+                headers: {
+                    "Authorization": 'Bearer ' + localStorage.getItem('token')
+                },
+                success: function(response) {
+                    Toast.fire({
+                        icon: 'success',
+                        title: response.message
+                    });
+                    loadDataRiwayatPekerjaan();
                 }
             })
         }

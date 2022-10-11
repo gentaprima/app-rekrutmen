@@ -38,14 +38,14 @@
                     <img src="{{asset('/logo.png')}}" alt="IMG" class="size-logo">
                 </div>
 
-                <form class="login100-form validate-form" method="post" action="/process-sign-up">
+                <form class="login100-form validate-form" method="post" action="">
                     @csrf
                     <span class="login100-form-title">
                         Register Users
                     </span>
 
                     <div class="wrap-input100 validate-input">
-                        <input class="input100" type="email" required name="email" id="username" value="{{old('email')}}" placeholder="Email">
+                        <input class="input100" type="email" required name="email" id="email" value="{{old('email')}}" placeholder="Email">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-user" aria-hidden="true"></i>
@@ -60,7 +60,7 @@
                         </span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Confirm Password is required">
-                        <input class="input100" type="password" required id="password" name="confirmPassword" placeholder="Confirm Password">
+                        <input class="input100" type="password" required  id="confirmPassword"  name="confirmPassword" placeholder="Confirm Password">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-lock" aria-hidden="true"></i>
@@ -68,7 +68,7 @@
                     </div>
 
                     <div class="container-login100-form-btn">
-                        <button type="submit" class="login100-form-btn">
+                        <button type="button" onclick="signUp()" class="login100-form-btn">
                             Sign Up
                         </button>
                     </div>
@@ -111,7 +111,7 @@
     <script src="{{asset('css_login/js/main.js')}}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-         const Toast = Swal.mixin({
+        const Toast = Swal.mixin({
             toast: true,
             position: 'top-right',
             iconColor: 'white',
@@ -130,7 +130,47 @@
                 title: message.innerHTML
             });
         }
-      
+
+        function signUp() {
+
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirmPassword").value;
+
+            if (email != '' && password != '' && confirmPassword != '') {
+                $.ajax({
+                    url: '/api/sign-up',
+                    dataType: 'json',
+                    type: 'post',
+                    data : {
+                        email : email,
+                        password : password,
+                        confirmPassword : confirmPassword
+                    },
+                    success: function(response) {
+                        if (response.success == true) {
+                            Toast.fire({
+                                icon: 'success',
+                                title: response.message
+                            });
+                        } else {
+                            Toast.fire({
+                                icon: 'error',
+                                title: response.message
+                            });
+
+                        }
+                    }
+                })
+            } else {
+                Toast.fire({
+                    icon: 'error',
+                    title: 'Data tidak boleh kosong!'
+                });
+            }
+
+
+        }
     </script>
 
 </body>

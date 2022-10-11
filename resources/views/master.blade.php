@@ -64,6 +64,7 @@ use Illuminate\Support\Facades\Session;
             color: white;
         }
     </style>
+    <script src="{{asset('css_dashboard/plugins/jquery/jquery.min.js')}}"></script>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -122,12 +123,10 @@ use Illuminate\Support\Facades\Session;
                         <div id="menu-group">
 
                         </div>
-                        <!-- Add icons to the links using the .nav-icon class
-                        
-               with font-awesome or any other icon font library -->
-                        <?php if (Session::get('admin') == true) { ?>
+               <!-- Admin -->
+                          <div id="menuAdmin">
                             <li class="nav-item">
-                                <a href="pages/widgets.html" class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}">
+                                <a href="/dashboard-admin" class="nav-link {{ Request::is('dashboard-admin') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-th"></i>
                                     <p>
                                         Data Pelamar
@@ -135,14 +134,17 @@ use Illuminate\Support\Facades\Session;
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/logout" class="nav-link">
+                                <a href="#" onclick="logout()"  class="nav-link">
                                     <i class="nav-icon fas fa-th"></i>
                                     <p>
                                         Logout
                                     </p>
                                 </a>
                             </li>
-                        <?php } else { ?>
+                            
+                            </div>
+                            <!-- users -->
+                            <div id="menuUser">
                             <li class="nav-item">
                                 <a href="/dashboard" class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-th"></i>
@@ -152,7 +154,7 @@ use Illuminate\Support\Facades\Session;
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/data-pelamar" class="nav-link {{ Request::is('data-pelamar') ? 'active' : '' }}">
+                                <a href="/data-pelamar" id="link-data-pelamar" class="nav-link {{ Request::is('data-pelamar') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-th"></i>
                                     <p>
                                         Data Lamaran
@@ -160,15 +162,15 @@ use Illuminate\Support\Facades\Session;
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/logout" class="nav-link">
+                                <a href="#" onclick="logout()" class="nav-link">
                                     <i class="nav-icon fas fa-th"></i>
                                     <p>
                                         Logout
                                     </p>
                                 </a>
                             </li>
+                            </div>
 
-                        <?php } ?>
 
 
                     </ul>
@@ -199,7 +201,7 @@ use Illuminate\Support\Facades\Session;
     <!-- ./wrapper -->
 
     <!-- jQuery -->
-    <script src="{{asset('css_dashboard/plugins/jquery/jquery.min.js')}}"></script>
+    
     <!-- jQuery UI 1.11.4 -->
     <script src="{{asset('css_dashboard/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -255,7 +257,30 @@ use Illuminate\Support\Facades\Session;
                 title: message.innerHTML
             });
         }
+
+        function logout(){
+            window.localStorage.clear();
+            window.localStorage.removeItem('login')
+            window.localStorage.removeItem('role')
+            window.localStorage.removeItem('id')
+            window.localStorage.removeItem('token')
+            window.location.replace('/');
+        }
+
+        if(localStorage.getItem('role') == 1){
+            document.getElementById("menuAdmin").hidden = false
+            document.getElementById("menuUser").hidden = true
+        }else{
+            document.getElementById("menuAdmin").hidden = true
+            document.getElementById("menuUser").hidden = false
+
+        }
+
+        // window.localStorage.clear();
+
+        document.getElementById("link-data-pelamar").href = `/data-pelamar/${localStorage.getItem('id')}`;
     </script>
+
 
 </body>
 
